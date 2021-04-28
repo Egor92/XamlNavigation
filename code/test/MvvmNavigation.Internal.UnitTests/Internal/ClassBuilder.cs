@@ -62,7 +62,7 @@ namespace Egor92.MvvmNavigation.Internal.UnitTests.Internal
                 _frameControlType
             };
             var constructorInfo =
-                typeof(NavigationManagerAttribute).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
+                typeof(FrameControlTypeAttribute).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, types, null);
             var customAttributeBuilder = new CustomAttributeBuilder(constructorInfo, constructorValues);
             typeBuilder.SetCustomAttribute(customAttributeBuilder);
         }

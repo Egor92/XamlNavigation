@@ -86,5 +86,28 @@ namespace Egor92.MvvmNavigation
                 dispatcher.InvokeAsync(action).GetAwaiter().GetResult();
             }
         }
+
+        public T InvokeInUiThread<T>(object control, Func<T> action)
+        {
+            if (control == null)
+            {
+                throw new ArgumentNullException(nameof(control));
+            }
+
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
+            var dispatcher = Dispatcher.UIThread;
+            if (dispatcher == null || dispatcher.CheckAccess())
+            {
+                return action();
+            }
+            else
+            {
+                return dispatcher.InvokeAsync(action).GetAwaiter().GetResult();
+            }
+        }
     }
 }

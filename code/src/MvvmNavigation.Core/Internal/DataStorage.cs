@@ -9,22 +9,35 @@ namespace Egor92.MvvmNavigation.Internal
 
         public void Add(string key, NavigationData navigationData)
         {
-            key = key ?? throw new ArgumentNullException(nameof(key));
-            navigationData = navigationData ?? throw new ArgumentNullException(nameof(navigationData));
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (navigationData == null)
+            {
+                throw new ArgumentNullException(nameof(navigationData));
+            }
 
             _navigationDataByKey[key] = navigationData;
         }
 
         public bool IsExist(string key)
         {
-            key = key ?? throw new ArgumentNullException(nameof(key));
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
 
             return _navigationDataByKey.ContainsKey(key);
         }
 
         public NavigationData Get(string key)
         {
-            key = key ?? throw new ArgumentNullException(nameof(key));
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
 
             return _navigationDataByKey[key];
         }

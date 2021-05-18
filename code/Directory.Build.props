@@ -17,7 +17,7 @@
     <RootNamespace>$(Company).$(MSBuildProjectName)</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   
   <PropertyGroup Label="Release configuration">

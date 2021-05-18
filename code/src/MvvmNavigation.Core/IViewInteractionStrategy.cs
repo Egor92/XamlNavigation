@@ -14,5 +14,7 @@ namespace Egor92.MvvmNavigation
         void SetDataContext([NotNull] object control, object dataContext);
 
         void InvokeInUIThread([NotNull] object control, [NotNull] Action action);
+
+        T InvokeInUiThread<T>([NotNull] object control, [NotNull] Func<T> action);
     }
 }

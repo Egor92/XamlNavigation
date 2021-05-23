@@ -16,12 +16,7 @@ namespace Egor92.MvvmNavigation.Internal
 
         #region Ctor
 
-        protected Navigator([NotNull] object frameControl, IViewInteractionStrategy viewInteractionStrategy)
-            : this(frameControl, viewInteractionStrategy, new DataStorage())
-        {
-        }
-
-        protected Navigator([NotNull] object frameControl, IViewInteractionStrategy viewInteractionStrategy, [NotNull] IDataStorage dataStorage)
+        public Navigator([NotNull] object frameControl, IViewInteractionStrategy viewInteractionStrategy, [NotNull] IDataStorage dataStorage)
         {
             _frameControl = frameControl ?? throw new ArgumentNullException(nameof(frameControl));
             _viewInteractionStrategy = viewInteractionStrategy ?? throw new ArgumentNullException(nameof(viewInteractionStrategy));

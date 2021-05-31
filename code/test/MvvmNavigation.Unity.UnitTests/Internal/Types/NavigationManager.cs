@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Egor92.MvvmNavigation.Abstractions;
 
 namespace Egor92.MvvmNavigation.Unity.UnitTests.Internal.Types
@@ -16,7 +15,13 @@ namespace Egor92.MvvmNavigation.Unity.UnitTests.Internal.Types
             throw new NotImplementedException();
         }
 
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        public void NavigateBack()
+        {
+            throw new NotImplementedException();
+        }
+
+#pragma warning disable 67
         public event EventHandler<NavigationEventArgs> Navigated;
+#pragma warning restore 67
     }
 }

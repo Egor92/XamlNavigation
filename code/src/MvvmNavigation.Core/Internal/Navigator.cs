@@ -75,6 +75,20 @@ namespace Egor92.MvvmNavigation.Internal
             });
         }
 
+        public void Navigate([NotNull] object view)
+        {
+            if (view == null)
+            {
+                throw new ArgumentNullException(nameof(view));
+            }
+
+            InvokeInUiThread(() =>
+            {
+                _viewInteractionStrategy.SetContent(_frameControl, view);
+                return (object)null;
+            });
+        }
+
         private T InvokeInUiThread<T>(Func<T> action)
         {
             return _viewInteractionStrategy.InvokeInUiThread(_frameControl, action);

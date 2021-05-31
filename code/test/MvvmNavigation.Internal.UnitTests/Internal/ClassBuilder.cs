@@ -18,7 +18,7 @@ namespace Egor92.MvvmNavigation.Internal.UnitTests.Internal
             return new ClassBuilder();
         }
 
-        internal ClassBuilder WithNavigationManagerAttribute(Type frameControlType)
+        internal ClassBuilder WithFrameControlType(Type frameControlType)
         {
             _toConfigureNavigationManagerAttribute = true;
             _frameControlType = frameControlType;

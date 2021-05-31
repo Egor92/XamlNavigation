@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Egor92.MvvmNavigation.Abstractions;
 using Egor92.MvvmNavigation.Internal;
 using JetBrains.Annotations;
@@ -9,6 +10,7 @@ namespace Egor92.MvvmNavigation
     {
         #region Fields
 
+        private readonly Stack<NavigationHistoryItem> _navigationHistory = new Stack<NavigationHistoryItem>();
         private readonly Navigator _navigator;
 
         #endregion
@@ -54,7 +56,19 @@ namespace Egor92.MvvmNavigation
         {
             var navigationResult = _navigator.Navigate(navigationKey, arg);
             var navigationEventArgs = new NavigationEventArgs(navigationResult.View, navigationResult.ViewModel, navigationKey, arg);
+            SaveNavigationHistory(navigationResult.ViewModel, navigationResult.View);
             RaiseNavigated(navigationEventArgs);
+        }
+
+        private void SaveNavigationHistory(object viewModel, object view)
+        {
+            _navigationHistory.Push(new NavigationHistoryItem(viewModel, view));
+        }
+
+        public void NavigateBack()
+        {
+            var navigationHistoryItem = _navigationHistory.Pop();
+            _navigator.Navigate(navigationHistoryItem.View);
         }
     }
 }

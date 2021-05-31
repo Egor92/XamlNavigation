@@ -10,5 +10,7 @@ namespace Egor92.MvvmNavigation.Abstractions
         void Navigate([NotNull] string navigationKey, object arg);
 
         event EventHandler<NavigationEventArgs> Navigated;
+
+        void NavigateBack();
     }
 }
